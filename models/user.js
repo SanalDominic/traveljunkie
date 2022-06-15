@@ -1,9 +1,4 @@
-const { ObjectId } = require("mongodb");
 const mongoose = require("mongoose");
-const marked = require("marked");
-const createDomPurify = require("dompurify");
-const { JSDOM } = require("jsdom");
-const dompurify = createDomPurify(new JSDOM().window);
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -120,10 +115,5 @@ const userSchema = new mongoose.Schema({
     },
   ],
 });
-
-// userSchema.pre("validate", function (next) {
-//   console.log("inside schema");
-//   console.log(this.blogs[0]);
-// });
 
 module.exports = mongoose.model("User", userSchema);

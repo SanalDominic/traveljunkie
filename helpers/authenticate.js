@@ -1,10 +1,8 @@
-const mongoose = require("mongoose");
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 module.exports = {
   signUp: async (signupFormData) => {
     let signupStatus = false;
-    //console.log(signupFormData);
     let dbUserData = await User.findOne({ email: signupFormData.email });
     if (dbUserData) {
       return (signupStatus = true);
