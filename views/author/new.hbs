@@ -1,0 +1,70 @@
+{{>_navbar}}
+<div class="container pt-5 mt-5" style="min-height:85vh ;">
+  <div class="row">
+    <div class="col-12 offset-md-2 col-md-8">
+      <h1 class="mb-4">New Blog</h1>
+      <form action="newpost" method="POST" enctype="multipart/form-data">
+        <div class="form-group mb-4">
+          <label for="title" class="fw-bold pb-2 fs-6">Title</label>
+          <input
+            required
+          
+            type="text"
+            name="title"
+            id="title"
+            class="form-control text-field"
+          />
+
+        </div>
+        <div class="form-group mb-4" style="width:fit-content">
+          <label for="categories" class="fw-bold pb-2 fs-6">Category</label>
+          <select
+            class="form-select text-field"
+            name="category"
+            aria-label="Default select example"
+          >
+           
+            <option value="places">Places</option>
+            <option value="inspiration">Inspiration</option>
+            <option value="culture">Culture</option>
+            <option value="experience">Experience</option>
+          </select>
+        </div>
+        <div class="form-group mb-4">
+          <label for="title" class="fw-bold pb-2 fs-6">Description</label>
+          <textarea
+            required
+            name="description"
+            id="description"
+            class="form-control text-field"
+                   style="height: 150px !important ;"
+            maxlength="200"
+          ></textarea>
+        </div>
+
+        <div class="form-group mb-3">
+          <label for="content" class="fw-bold pb-2 fs-6">Blog Content</label>
+          <textarea
+            required
+            name="content"
+            id="content"
+            class="form-control text-field"
+            style="height: 200px !important ;"
+          ></textarea>
+        </div>      
+         <div class="form-group pb-3">
+          <label for="image" class="fw-bold pb-2 fs-6">image upload</label>
+          <input  type="file" name="images" accept="image/*">
+        </div> 
+        <div class="form-group pb-5">
+          <a href="/author" class="button small">Cancel</a>
+          <button type="submit" class="button  small">Save</button>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+
+</div>
+

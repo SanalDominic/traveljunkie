@@ -1,0 +1,69 @@
+<img
+  class="img-fluid img-back"
+  src="/images/bgimage/5ed719559d85627f1a1f8492_travel Tell stencil 2.svg"
+  alt="bg-image"
+/>
+
+<div class="container">
+  <div
+    class="d-flex align-items-center justify-content-center"
+    style="height: 100vh;"
+  >
+
+    <form action="/signin" method="post" style="width: 40rem;">
+      <div class="dflex">
+        <div class="row text-center g-4">
+          <div class="col-11 offset-md-3 col-md-6">
+            <h4 class="fw-bold text-uppercase">Travel Junkie</h4>
+            {{#if msg}}
+              <h3 class="fw-bold">Welcome <br /> {{msg}} !</h3>
+
+            {{else}}
+              <h3 class="fw-bold">Welcome back!</h3>
+            {{/if}}
+
+          </div>
+          <div class="offset-1 col-10 offset-md-3 col-md-6 text-center">
+            <label for="signin">Don't have an account ?
+              <br />
+              <span class="ps-3"><a href="/signup">Go to Sign up page</a></span></label>
+          </div>
+          <div class="offset-1 col-10 offset-md-3 col-md-6">
+            <input
+              required
+              type="email"
+              name="email"
+              class="form-control text-field"
+              placeholder="Enter email"
+              aria-label="email"
+            />
+          </div>
+          <div class="offset-1 col-10 offset-md-3 col-md-6">
+            <input
+              required
+              type="password"
+              name="password"
+              class="form-control text-field small"
+              placeholder="Enter Password"
+              aria-label="password"
+            />
+          </div>
+          <div>
+            {{#if error}}
+              <p class="text-danger fw-bold">
+                {{error}}
+              </p>
+            {{/if}}
+
+          </div>
+
+          <div class="offset-1 col-10 offset-md-3 col-md-6">
+            <button type="submit" class="button sign-in-button small">Sign in</button>
+          </div>
+
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

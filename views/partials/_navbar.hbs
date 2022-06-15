@@ -1,0 +1,121 @@
+<nav id="nav" class="navbar navbar-expand-sm p-2">
+  <div class="container-fluid" style="align-items: baseline;">
+    <a class="navbar-brand text-uppercase fw-bolder me-0" href="/">Travel
+      Junkie</a>
+
+    <div
+      class="collapse navbar-collapse order-5 order-sm-0 pt-3"
+      id="navbarText"
+    >
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/blogs">Blogs</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarmenu"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >Categories</a>
+          <ul
+            class="dropdown-menu text-capitalize"
+            aria-labelledby="navbarmenu"
+          >
+            <li>
+              <a
+                href="/blogs/category/places"
+                class="btn btn-primary btn-sm mb-1 dropdown-item"
+              >places</a></li>
+            <li>
+              <a
+                href="/blogs/category/inspiration"
+                class="btn btn-success btn-sm mb-1 dropdown-item"
+              >inspiration</a></li>
+            <li>
+              <a
+                href="/blogs/category/culture"
+                class="btn btn-danger btn-sm mb-1 dropdown-item"
+              >culture</a></li>
+            <li>
+              <a
+                href="/blogs/category/experience"
+                class="btn btn-warning btn-sm mb-1 dropdown-item"
+              >experience</a></li>
+
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="d-flex navbar-brand align-items-center me-0"
+      style="font-size: 14px;"
+    >
+
+      {{#if user}}
+        {{! <i class="bi bi-bookmark-star-fill fs-4 pe-1"></i> }}
+        <a href="/beauthor" class="button sign-in-button small me-2">Travel
+          Junkie</a>
+        <div class="btn-group">
+          <a
+            type="button"
+            class="dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-person-bounding-box fs-5"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end text-end">
+            <li><a class="dropdown-item" href="/logout">logout</a></li>
+          </ul>
+        </div>
+
+      {{else if author}}
+        {{! <i class="bi bi-bookmark-star-fill fs-4 pe-1"></i> }}
+        {{#if profile}}
+          <a href="/author" class="button sign-in-button small me-2">Profile</a>
+        {{/if}}
+        <div class="btn-group">
+          <a
+            type="button"
+            class="dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <i class="bi bi-person-bounding-box fs-5"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end text-end">
+
+            <li><a class="dropdown-item" href="/logout">logout</a></li>
+          </ul>
+        </div>
+
+      {{else}}
+
+        <div class="btn-group">
+          <a href="/signin" class="pe-3">Sign in</a>
+          <a href="/signup">Sign up now</a>
+        </div>
+      {{/if}}
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarText"
+        aria-controls="navbarText"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"><i
+            class="bi bi-list fs-1 ps-1"
+          ></i></span>
+      </button>
+
+    </div>
+
+  </div>
+
+</nav>

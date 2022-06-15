@@ -1,0 +1,273 @@
+<style>
+  body{
+    margin: 0 !important;
+  }
+</style>
+<div class="container-fluid d-flex py-3">
+  <div class="navbar-brand fw-bold ms-auto">
+    Admin
+  </div>
+  <a type="button" class="btn btn-dark ms-auto" href="/admin/logout">logout</a>
+</div>
+
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item d-md-flex" style="height: 100vh;">
+    <div class="col-md-2 bg-light">
+
+      <h2 class="accordion-header" id="headingOne">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          aria-expanded="true"
+          aria-controls="collapseOne"
+        >
+          Author Data
+        </button>
+      </h2>
+      <h2 class="accordion-header" id="headingTwo">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseTwo"
+          aria-expanded="false"
+          aria-controls="collapseTwo"
+        >
+          Blog List
+        </button>
+      </h2>
+      <h2 class="accordion-header" id="headingThree">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseThree"
+          aria-expanded="false"
+          aria-controls="collapseThree"
+        >
+          Most Liked Blogs
+        </button>
+      </h2>
+
+    </div>
+    <div class="col-md-10">
+
+      <div
+        id="collapseOne"
+        class="accordion-collapse collapse show"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body pt-5">
+
+          <table id="users" class="table table-hover table-responsive display py-4">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Active Status</th>
+              </tr>
+            </thead>
+            <tbody id="test">
+              {{#each authorData}}
+                <tr>
+                  <th scope="row">{{@index}}</th>
+                  <td class="text-capitalize">{{this.name}}</td>
+                  <td>{{this.email}}</td>
+                  <td>
+                    <select
+                      onchange="status('{{this._id}}',this)"
+                      class="form-select form-select-sm status"
+                      aria-label=".form-select-sm example"
+                      id="status"
+                    >
+                      <option
+                        id="selected" class="selected"
+                        value="{{this.status}}"
+                      >{{this.status}}</option>
+
+                    </select></td>
+                </tr>
+              {{/each}}
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+      <div
+        id="collapseTwo"
+        class="accordion-collapse collapse"
+        aria-labelledby="headingTwo"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body pt-5">
+
+<table class="table table-hover table-responsive display py-4">
+<thead class="table-dark">
+  <th></th>
+  <th scope="col">Author Name</th>
+   <th scope="col">blog List</th>
+</thead>
+<tbody>
+   {{#each blogData}}
+  <tr>
+     <td scope="row">{{@index}}</td>
+    <td>{{this.name}}</td>
+    <td>
+     <table class="table">
+       <thead>
+         <th scope="col">Title</th>
+        <th scope="col">View</th>
+        <th scope="col">Delete Status</th>
+       </thead>
+       <tbody>
+           {{#each this.blogs}}
+         <tr colspan="2">
+         <td>{{title}}</td>
+          <td><a href="author/post/{{_id}}"><i class="bi bi-eye fs-5"></i></a></td>
+          <td> <select onchange="blogStatus('{{../_id}}','{{_id}}',this)"    class="form-select form-select-sm blogStatus"
+                      aria-label=".form-select-sm example">
+                            <option class="selecteblogStatus" value="{{this.delete}}">{{this.delete}}</option>
+
+                          </select></td>
+          </tr>
+          {{/each}}
+       </tbody>
+     </table>
+    </td>
+  </tr>
+{{/each}}
+</tbody>
+</table>
+        </div>
+      </div>
+
+      <div
+        id="collapseThree"
+        class="accordion-collapse collapse"
+        aria-labelledby="headingThree"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body pt-5">
+
+          <table class="table table-hover table-responsive display py-4">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Blog Name</th>
+                <th scope="col">likes</th>
+                <th scope="col">Featured Status</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              {{#each mostLiked}}
+                <tr>
+                  <th scope="row">{{@index}}</th>
+                  <td class="text-capitalize"> {{this._id.title}}</td>
+                  <td> {{this.likes}}</td>
+                  <td>
+                    <select
+                      onchange="featured('{{this._id.authId}}','{{this._id.id}}',this)"
+                      class="form-select form-select-sm featured"
+                      aria-label=".form-select-sm example"
+                      id="featured" 
+                    >
+                      <option
+                        id="selectedfeatured" class="selectedfeatured"
+                        value="{{this._id.featured}}"
+                      >{{this._id.featured}}</option>
+
+                    </select>
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+$(window).on('load',function() {
+    $(".selected").each(function() {
+    var y= $(this).val()
+    if(y=="active"){
+     
+      
+     $(this).parent().append('<option value="blocked">blocked</option>')
+    }
+    else{
+      
+       $(this).parent().append('<option value="active">active</option>')
+    }
+           
+    });
+
+  $(".selectedfeatured").each(function() {
+    var z= $(this).val()
+    if(z=="true"){    
+      
+     $(this).parent().append('<option value="false">false</option>')
+    }
+    else{
+      
+       $(this).parent().append('<option value="true">true</option>')
+    }
+            
+    });
+
+
+
+  $(".selecteblogStatus").each(function() {
+    var j= $(this).val()
+    if(j=="true"){    
+      
+     $(this).parent().append('<option value="false">false</option>')
+    }
+    else{
+      
+       $(this).parent().append('<option value="true">true</option>')
+    }
+            
+    });
+
+
+});
+
+ 
+  function status(authorID,val){  
+   
+     $.ajax({ type: "POST", url:
+  "/admin/setstatus", data: { authorID:authorID,status: val.value} }) }
+
+   function featured(authorId,blogId,val){     
+    
+     $.ajax({ type: "POST", url:
+  "/admin/setfeatured", data: {authorId:authorId, blogId:blogId,featured: val.value} }) }
+
+
+     function blogStatus(authorId,blogId,val){ 
+     $.ajax({ type: "POST", url:
+  "/admin/setblogStatus", data: {authorId:authorId, blogId:blogId,blogStatus: val.value} }) }
+
+
+
+$(document).ready(function () {
+    $('table.display').DataTable();
+});
+
+
+</script>

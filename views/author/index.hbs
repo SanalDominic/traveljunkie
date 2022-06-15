@@ -1,0 +1,263 @@
+{{>_navbar}}
+
+<div class="container-fluid p-0 pb-4" style="min-height:85vh ;">
+<div class="d-md-flex">
+    <div class="row bg-white w-100">
+            <div class="col-md-4 px-0 h-100 d-none d-sm-block">
+
+                <div id="carouselExampleCaptions" class="carousel slide  h-100" data-bs-ride="carousel">
+                    <div class="carousel-indicators d-flex justify-content-end">
+                    <div class="me-auto ">
+
+                        
+                        </div>
+
+                    {{#each blogData}}
+        
+                            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{@index}}" 
+                                aria-current="true" aria-label="Slide {{@index}}" class="active"></button>
+                    {{/each}}
+                    
+                    </div>
+                    <div class="carousel-inner h-100">
+                        {{#each blogData}}
+                            <div class="carousel-item  h-100">                            
+                            {{#each this}}
+                                {{#each this.image}}
+                                    <img src='data:{{contentType}};base64,{{imageBase64}}'
+                                                class="d-block h-100 w-100 img-fluid" alt="...">
+                                    <div class="card-img-overlay" style="opacity: .5; background-color: black;"></div>
+                    
+                                {{/each}}
+
+                            {{/each}}
+                                    <div class="carousel-caption  d-md-block text-start mb-5">
+                                        <h3 class="text-capitalize">{{this.blogs.title}}</h3>
+                                        <p>{{this.blogs.description}}</p>
+                                        <div class="mt-md-5">
+                                            <a href="/author/post/{{this.blogs._id}}" class="text-white">READ MORE <span class="ps-2"><i
+                                                class="bi bi-arrow-right-circle-fill"></i></span></a>
+                                    </div>
+                                    </div>
+                                
+                                </div>
+
+                        {{/each}}
+                
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="prev">
+
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                        data-bs-slide="next">
+
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+
+            </div>
+
+            <div class="col-md-8 ps-5 h-100">
+                <div class="pt-4 text-end">
+                <a href="https://rzp.io/l/um1mNmIF" class="button sign-in-button small fs-4 text-danger fw-bold">Support Us</a>
+
+                </div>
+                <h1 class="mt-5 fw-bolder mb-5">A community of <br>Travellers and <br>Travel Junkies</h1>
+        
+                <div class="featured mb-2">
+
+                    <h3 class="mt-2 pb-3 fw-bold">Featured Posts</h3>
+                    <div class="row" style="flex-flow:row ;overflow-x:auto">
+                        
+                    
+                    {{#each featured}}
+                        <div class="col-12 col-sm-6 col-md-5 col-lg-4 ps-0 pe-3 mb-2">
+                        <a href="/author/post/{{this.blogs._id}}" class="card_a">
+                            <div class="card bg-dark text-white h-100 f-card" style="min-height:150px;">
+                                {{#each this}}
+                                    {{#each this.image}}
+                                        <img src="data:{{contentType}};base64,{{imageBase64}}" class="card-img h-100" alt="..." style="opacity: 0.5; ;">
+                                    {{/each}}
+                                {{/each}}
+                                <div class="card-img-overlay overflow-hidden d-flex h-100 justify-content-center" style="flex-flow:column ;">
+                                    <h3 class="card-title text-capitalize">{{this.blogs.title}}</h3>
+                                    <p class="card-text f-p">{{this.blogs.description}} </p>
+                                </div>
+                            </div>
+                        </a>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid gx-5  py-5 bg-light">
+        <div class="row">
+            <div class="col-md-8 col-xl-9">
+                <h1 class="fw-bolder pb-3">
+                    Stories
+                </h1>
+      
+                 <div class="position-relative search mb-3" style="width:15rem ;">
+                    <input required type="text" name="name" class="form-control text-field" placeholder="Search Here..."
+                        aria-label="Search Here" onclick="search(this)" id="searchInput" /> <span class="position-absolute"><i class="bi bi-search"></i></span>
+                </div>
+                <div  class="pe-sm-2 pe-md-4">
+                    <div class="row" id="searchData">
+
+                 
+                    {{#each blogData}}
+                <div class="col-md-12 col-xl-6 my-3">
+                    <a href="/author/post/{{this.blogs._id}}" class="card_a">
+                        <div class="card mb-3 bg-light h-100">
+                            <div class="row g-0 h-100">
+                                <div class="col-sm-6 col-md-4">
+             
+                    {{#each this}}
+                    {{#each this.image}}
+                    <img src='data:{{contentType}};base64,{{imageBase64}}'
+                                                            class="img-fluid h-100" alt="blog-image" >
+                    {{/each}}
+                    {{/each}}
+                                </div>
+                                <div class="col-sm-6 col-md-8">
+                                    <div class="card-body p-4 h-100 d-flex flex-flow-column justify-content-center">
+
+                                        <h5 class="card-title fw-bolder fs-3 text-capitalize"> {{this.blogs.title}}</h5>
+                                        <p class="card-text"> {{this.blogs.description}}</p>
+                                        <p class="card-text"><small class="text-muted"> {{dateFormat
+                                                this.blogs.createdAt 'DD/MM/YYYY'}}</small></p>
+                                        <div class="d-flex align-items-center">                                         
+                                            <h5 class="text-capitalize">{{this.name}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+</div>
+                    {{/each}}
+                       </div>
+                </div>
+
+                <div class="row py-3">
+                <div class="col-sm-9"><hr/></div> 
+                <div class="col-sm-3 text-end"><a href="/blogs"> <span class="text-muted">View All<i class="bi bi-arrow-right-circle ps-2 fw-bolder"></i></span></a></div>
+                
+                </div>
+                            </div>
+                            <div class="col-md-4 col-xl-3">
+                                <div>
+                                    <h3 class="fw-bold mb-4">Top Travel Junkies</h3>
+                                    <hr class="mb-5">
+                                </div>                            
+                                {{#each travelJnkies}}                                
+                                <a href=" /authorblogs/{{this._id.id}}">
+                    <div class="card mb-3 bg-light toptraveljunkies " style="max-width: 50rem;">
+                                    <div class="row g-0 px-3 py-1">                                
+                                            <div class="card-body d-flex align-items-center px-0">
+                                                <div class="col-4 col-md-5 col-lg-4 d-flex justify-content-center justify-content-md-start justify-content-lg-center">
+                                            {{#each this._id.profile}}                    
+                                    <img src='data:{{this.contentType}};base64,{{this.imageBase64}}'
+                                        class="img-fluid profile" alt="blog-image">
+                                            {{/each}}
+                                             </div>
+
+                {{#each this}}
+                <div class="col-8 col-md-7 col-lg-8 text-start ps-2 ps-lg-4">
+                    <h5 class="card-title text-capitalize">{{this.name}}</h5>
+
+                                                <p class="card-text text-capitalize"><small class="text-muted">{{this.place}}, {{this.country}}</small></p>
+                </div>
+                {{/each}}
+                                    </div>
+                            
+                                    </div>
+                                </div>
+                </a>
+                                {{/each}}
+                                <div class="mt-5">
+                                    <h3 class="fw-bold mb-4">Categories</h3>
+                                    {{> _categories}}
+                                </div>
+
+                            </div>
+                </div>
+</div>
+
+
+
+ 
+
+                </div>
+<script>
+  
+
+$('.carousel-inner .carousel-item:first').addClass('active');
+
+var myDiv = $('.f-p');
+myDiv.text(myDiv.text().substring(0,50))
+
+
+ var Search=$("#searchData");
+    var input=document.getElementById("searchInput")
+   input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("searchInput").onclick(this);
+  }
+});
+
+
+  function search(searchKey){ 
+        var value=searchKey.value
+        if(value.length>=2)
+        {
+            $.ajax({ type: "POST", url: "/blogs/search",cache:true ,data: { searchKey:searchKey.value} }).done((response)=>{ 
+            console.log(response); 
+            if (!$.trim(response)){ 
+                $("#searchData").prepend("<p class='text-danger'>No search result</p>")
+                    setTimeout(location.reload.bind(location), 1000);
+            }
+            else{      
+                    document.getElementById("searchData").innerHTML = "";
+                    for(var  i=0;i<response.length;i++){   
+                        for(j=0;j<response[i].blogs.length;j++)
+                        {     
+                        var holder=$('<div class="col-md-12 col-xl-6">')    
+                        var anchor=$('<a href="/author/post/'+response[i].blogs[j]._id+'"class="card_a">');
+                        var card=$('<div class="card mb-3 bg-light h-100" id="card">');
+                        var row =$('<div class="row g-0 h-100">')
+                        var image=$('<div class="col-sm-6 col-md-4">')      
+                            for(k=0;k<response[i].blogs[j].image.length;k++){
+                                var imagesource='<img src="data:'+response[i].blogs[j].image[k].contentType +';base64,'+response[i].blogs[j].image[k].imageBase64 +'" class="img-fluid h-100" alt="blog-image" >'
+                            }
+                        image.append(imagesource);
+                        var col=$('<div class="col-sm-6 col-md-8">');
+                        var cardbody=$('<div class="card-body p-4 h-100 d-flex flex-flow-column justify-content-center">');             
+                        var title=$('<h5 class="card-title fw-bolder fs-3 text-capitalize">'+ response[i].blogs[j].title +"</h5>")   
+                        var description=$( '<p class="card-text"> '+ response[i].blogs[j].description + "</p>");
+                        var date=$( '<p class="card-text"><small class="text-muted">'+moment( response[i].blogs[j].createdAt ).format('DD/MM/YYYY') +"</small></p>")
+                        var name=$('<div class="d-flex align-items-center"> <h5 class="text-capitalize">'+response[i].name+"</h5> </div>")      
+                        cardbody.append([title,description,date,name]);   
+                        col.append(cardbody)   
+                        row.append([image,col]);
+                        card.append(row);
+                        anchor.append(card);
+                        holder.append(anchor)
+                        Search.append(holder)
+                        }   
+                    } 
+                } 
+            }) 
+            
+        }
+    }
+
+
+
+</script>

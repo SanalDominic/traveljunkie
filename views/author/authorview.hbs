@@ -1,0 +1,136 @@
+
+{{>_navbar}}
+
+<div class="container-fluid g-5" style="margin-top:100px ; min-height:85vh ;">
+    <div class="row g-0">
+        <div class="col-12 col-md-8 col-xl-9 gx-5">
+            <div>
+                <h3 class="fw-bold mb-4">{{this.authorBlogs.name}}</h3>
+                <p3 class="text-muted">{{this.authorBlogs.about}}</p>
+             
+            </div>
+     <div class="pe-sm-2 pe-md-4">
+           <div class="row gy-5">
+            {{#each authorBlogs}}
+          
+            {{#each this.blogs}}
+           
+            <div class="col-md-12 col-xl-6 my-3">
+                <div class="text-end ">
+                    <a href="author/edit/{{_id}}" class="pe-3 text-uppercase btn btn-light btn-sm">Edit</a>
+                    <a href="author/delete/{{_id}}" onclick="return confirm('Are you sure you want to Delete?');"  class="pe-2 text-uppercase btn btn-danger btn-sm">Delete</a>
+
+                </div>
+
+                <a href="author/post/{{_id}}" class="card_a">
+                    <div class="card mb-3 h-100">
+                        <div class="row g-0 h-100">
+                            <div class="col-sm-6 col-md-4">
+                                {{#each this.image}}
+                                <img src='data:{{contentType}};base64,{{imageBase64}}'
+                                        class="img-fluid h-100" alt="blog-image">
+                                        {{/each}}
+                            </div>
+                            <div class="col-sm-6 col-md-8">
+                                <div class="card-body p-3  h-100 d-flex flex-flow-column justify-content-center">                               
+                                    <h5 class="card-title fs-3">{{title}}</h5>
+                                    <p class="card-text">{{description}}</p>
+                                    <p class="card-text"><small class="text-muted">{{dateFormat
+                                            createdAt 'DD/MM/YYYY'}}</small></p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+         
+
+             </a>
+            </div>
+            {{/each}}
+        
+            {{/each}}
+          
+    </div>
+        </div>
+</div>
+
+        <div class="col-12 col-md-4 col-xl-3 gx-5">
+
+
+            <div class="card mb-3">
+                <div class="row g-0">
+
+                    <div class="p-4 bg-light">
+
+                        <div class="d-block text-center py-3 bg-white py-5">
+                            <div class="col-12">
+                     {{#each this.authorBlogs.profile}}
+
+
+           
+                                <img src='data:{{contentType}};base64,{{imageBase64}}'
+                                    class="img-fluid profile" alt=" blog-image">
+                                         {{/each}}
+                            </div>
+                            <div class="col-12">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{this.authorBlogs.name}}</h5>
+
+                                    <p class="card-text text-muted">
+                                        {{authorBlogs.place}},{{authorBlogs.country}}</p>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="pt-4 text-center">
+
+                            <a href="/author/new"><i class="bi bi-plus-square fs-4 ps-2"></i></a>
+                            <h6>Create New Blog</h6>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row gx-3 px-3">
+        <hr class="mt-5">
+        <h3 class="my-5">Other Travel Junkies</h3>
+
+        {{#each otherTravelJunkies}}
+
+
+        <div class="col-sm-6 col-md-3 mb-3">
+            <a href="/authorblogs/{{this._id}}">
+            <div class="card d-block text-center bg-white py-3 toptraveljunkies">
+                <div class="col-12">
+                            {{#each this.profile}}
+    
+                    <img src='data:{{this.contentType}};base64,{{this.imageBase64}}'
+                        class="img-fluid profile" alt="blog-image">
+                            {{/each}}
+                </div>
+                <div class="col-12">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.name}}</h5>
+
+                        <p class="card-text text-muted">{{this.country}},{{this.place}}</p>
+                    </div>
+                </div>
+
+
+            </div>
+            </a>
+        </div>
+   {{/each}}
+    </div>
+
+
+
+</div>

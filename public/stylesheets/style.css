@@ -1,0 +1,234 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  /* font-family: Gotham, sans-serif; */
+  background-color: #fff;
+}
+
+.row {
+  margin: 0 !important;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+hr {
+  opacity: 0.1 !important;
+}
+
+.navbar {
+  position: fixed;
+  padding-bottom: 2px;
+  width: 100%;
+  z-index: 2;
+  top: 0;
+  background-color: #fff;
+  transition: background-color 0.5s ease-in;
+  box-shadow: 1px 1px 14px 0 rgb(0 0 0 / 5%);
+}
+
+.navbar-brand {
+  color: #000;
+}
+
+.navbar-brand:hover {
+  color: initial;
+}
+
+.nav-link {
+  font-weight: bold;
+  color: #000;
+}
+
+.text-field:focus {
+  border-bottom-color: #2547f6;
+  background-color: #f7f7f7;
+  box-shadow: none;
+}
+
+.text-field {
+  height: 40px;
+  /* padding-bottom: 14px; */
+  border-style: none none solid;
+  border-width: 1px 1px 2px;
+  border-color: #000 #000 rgba(0, 0, 0, 0.04);
+  border-radius: 2px;
+  color: #232222;
+  box-shadow: 1px 1px 14px 0 rgb(0 0 0 / 5%);
+}
+
+.form-control {
+  font-size: inherit;
+}
+
+.button.sign-in-button {
+  width: 100%;
+}
+
+.button:focus {
+  background-color: #2547f6;
+}
+
+.button {
+  color: #fff !important;
+  padding: 9px 20px;
+  border-radius: 0px;
+  background-color: #232222;
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  border: 0;
+  text-decoration: none;
+}
+
+.button:hover {
+  background-color: #2547f6;
+}
+
+.btn {
+  border-radius: 0px;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  line-height: normal;
+}
+
+.profile {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  border: 3px solid lightgrey;
+  border-style: outset;
+}
+
+.navbar-toggler {
+  border: unset !important;
+  padding: 0;
+}
+
+.navbar-toggler:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.dropdown-menu {
+  min-width: 6rem;
+  text-align: center !important;
+  font-size: inherit;
+  padding: 0;
+}
+
+.dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: unset;
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+
+.f-card:hover {
+  color: black !important;
+}
+
+#search {
+  box-shadow: 1px 1px 14px 0 rgb(0 0 0 / 5%);
+  border-color: rgba(0, 0, 0, 0.04);
+}
+
+#search:focus {
+  background-color: #fff;
+}
+
+.interact span {
+  font-size: 20px;
+  padding-right: 1rem;
+}
+
+.card {
+  min-height: 240px !important;
+  border: none !important;
+  border-radius: 0;
+}
+.toptraveljunkies {
+  min-height: auto !important;
+}
+.card:hover {
+  background-color: #fff !important;
+  box-shadow: 1px 1px 15px 0 rgb(0 0 0 / 6%);
+  transition: 0.5s ease;
+}
+
+.carousel-item img {
+  min-height: 650px !important;
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.carousel-indicators {
+  margin-right: 10%;
+}
+
+.carousel-inner {
+  border-style: revert;
+}
+
+.img-back {
+  position: fixed;
+  top: 8%;
+  right: -5%;
+  height: 12rem;
+  z-index: -1000;
+  opacity: 60%;
+}
+
+.search span {
+  right: 16px;
+  top: 8px;
+  transform: rotate(92deg);
+}
+
+.card_a:hover {
+  color: #000;
+}
+
+img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.accordion-button {
+  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important ;
+}
+.accordion-button:focus {
+  z-index: none;
+  border-color: unset;
+}
+
+.flex-flow-column {
+  flex-flow: column;
+}
+
+
+/* admin */
+
+table.dataTable.no-footer{
+  border-bottom: unset;
+}
+tbody, td, tfoot, th, thead, tr{
+  border-bottom: 1px solid #dcdcdc !important;
+}
