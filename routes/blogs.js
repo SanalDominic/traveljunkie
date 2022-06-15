@@ -9,9 +9,8 @@ router.get("/", async (req, res) => {
   let session = req.session.user;
   let user = req.session.userDetails;
 
-  let travelJnkies = await topTravelJunkies.topTravelJunkies();
-
   try {
+    let travelJnkies = await topTravelJunkies.topTravelJunkies();
     let blogData = await User.aggregate([
       { $match: { status: "active" } },
       { $unwind: "$blogs" },
@@ -43,7 +42,7 @@ router.get("/", async (req, res) => {
       profile: true,
     });
   } catch (error) {
-    console.log(error.message);
+    res.send("catch error")
   }
 });
 
@@ -177,8 +176,6 @@ router.post("/favourites", async (req, res) => {
     res.send(false);
   }
 });
-
-
 
 router.post("/search", async (req, res) => {
   let searchKey = req.body.searchKey;
