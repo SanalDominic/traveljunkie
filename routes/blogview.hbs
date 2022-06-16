@@ -1,0 +1,175 @@
+
+{{>_navbar}}
+ 
+<div class="container-fluid mt-5 pt-5 bg-light" style="min-height:85vh ;">
+
+
+
+{{#each post}}
+{{#each this}}
+{{#each this.image}}
+
+<div class="container-fluid px-0">
+    <div class="row px-0">
+      <div class="col-12 offset-lg-1 col-lg-10">
+         <img src='data:{{contentType}};base64,{{imageBase64}}'
+                                         alt="blog-image" style="height: 400px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;">
+      </div>
+
+    </div>
+</div>
+{{/each}}
+{{/each}}
+{{/each}}
+
+{{#each post}}
+
+  <div class="container-fluid  px-lg-5 pb-5">
+  <div class="row">
+<div class="offest-0 col-12 offset-lg-1  col-lg-10 bg-white p-5">
+<h2 class="py-5">{{this.blogs.title}}</h2>
+
+<p class="lead pb-4">{{this.blogs.description}}</p>
+
+
+{{!-- <p>{{this.blogs.content}}</p> --}}
+<div id="content"></div>
+
+
+{{/each}}
+  <hr class="mt-5"/>
+<div class="d-flex">
+
+<div class="ms-auto pe-4 pt-2">
+{{#unless show}}
+{{#if guest}}
+{{#each post}}
+<i type="button"  onclick="like('{{this.blogs._id}}')" id="like" class="bi bi-heart fs-4 text-danger"></i>
+{{/each}}
+{{else}}
+  {{#each post}}
+
+  <i type="button"  onclick="like('{{this.blogs._id}}')" id="like" class="bi bi-heart-fill fs-4 text-danger"></i>
+  {{/each}}
+{{/if}}
+
+{{#if favourite}}
+  {{#each post}}
+
+  <i type="button" onclick="favourites('{{this.blogs._id}}')" id="favourite" class="bi bi-star fs-4 text-danger ps-3"></i>
+
+  {{/each}}
+
+{{else}}
+  {{#each post}}
+
+  <i type="button" onclick="favourites('{{this.blogs._id}}')" id="favourite" class="bi bi-star-fill fs-4 text-danger ps-3"></i>
+
+  {{/each}}
+
+
+{{/if}}
+
+{{/unless}}
+
+
+</div>
+
+</div>
+
+</div>
+
+  </div>
+
+</div>
+</div>
+
+<script>
+
+  var markdownContent ="{{markdown.content}}"
+    document.getElementById('content').innerHTML =
+      marked.parse(markdownContent);
+
+function like(blogId) {
+    $.ajax({
+        type: "POST",
+        url: "/blogs/like",
+        data: {          
+          blogId:blogId,
+        }
+    }).done(function(data){
+      if(data==true){
+       
+         $("#like").removeClass("bi-heart")        
+        $("#like").addClass("bi-heart-fill")
+      }else{
+        
+        $("#like").removeClass("bi-heart-fill")
+        $("#like").addClass("bi-heart")
+      }
+       
+      
+    });
+}
+
+
+
+function favourites(blogId) {
+    $.ajax({
+        type: "POST",
+        url: "/blogs/favourites",
+        data: {          
+          blogId:blogId,
+        }
+    }).done(function(data){
+      if(data==true){
+       
+        $("#favourite").removeClass("bi-star")        
+        $("#favourite").addClass("bi-star-fill")
+      }else{
+        
+        $("#favourite").removeClass("bi-star-fill")
+        $("#favourite").addClass("bi-star")
+      }
+       
+      
+    });
+}
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
