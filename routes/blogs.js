@@ -42,7 +42,7 @@ router.get("/", async (req, res) => {
       profile: true,
     });
   } catch (error) {
-    res.send("catch error")
+    console.log(error.message);
   }
 });
 
